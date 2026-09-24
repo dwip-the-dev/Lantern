@@ -1,0 +1,32 @@
+{
+  "name": "lantern",
+  "version": "1.0.0",
+  "description": "Lantern — Your Home Server Enlightened. Lightweight self-hosted home server dashboard & OS layer.",
+  "main": "cli/bin/lantern.js",
+  "bin": {
+    "lantern": "./cli/bin/lantern.js"
+  },
+  "scripts": {
+    "lantern": "node ./cli/bin/lantern.js",
+    "install:all": "node ./cli/bin/lantern.js install",
+    "start": "node ./cli/bin/lantern.js start",
+    "stop": "node ./cli/bin/lantern.js stop",
+    "status": "node ./cli/bin/lantern.js status",
+    "restart": "node ./cli/bin/lantern.js restart",
+    "logs": "node ./cli/bin/lantern.js logs",
+    "build": "npm --prefix client run build",
+    "dev:client": "npm --prefix client run dev",
+    "dev:server": "cd server && ./venv/bin/python run.py --reload"
+  },
+  "keywords": [
+    "homeserver",
+    "dashboard",
+    "casaos",
+    "portainer",
+    "docker",
+    "cloudflare-tunnel",
+    "homelab"
+  ],
+  "author": "Lantern Community",
+  "license": "MIT"
+}

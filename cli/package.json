@@ -1,0 +1,12 @@
+{
+  "name": "lantern-cli",
+  "version": "1.0.0",
+  "description": "CLI for Lantern — Your Home Server Enlightened",
+  "bin": {
+    "lantern": "./bin/lantern.js"
+  },
+  "type": "commonjs",
+  "keywords": ["homeserver", "dashboard", "docker", "selfhosted"],
+  "author": "Lantern Team",
+  "license": "MIT"
+}

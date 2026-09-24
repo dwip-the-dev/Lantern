@@ -1,0 +1,369 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+  --glass-bg: rgba(255, 255, 255, 0.76);
+  --glass-bg-dark: rgba(15, 17, 24, 0.72);
+  --glass-border: rgba(255, 255, 255, 0.28);
+  --glass-border-dark: rgba(255, 255, 255, 0.1);
+}
+
+body {
+  margin: 0;
+  background-color: #050608;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'SF Pro Display', system-ui, sans-serif;
+  color: #f1f5f9;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  letter-spacing: -0.01em;
+}
+
+/* ─── Ultra-Thin iOS Scrollbar ───────────── */
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 99px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.2); }
+
+/* ─── Apple iOS Frosted Glass ────────────── */
+.glass-ios {
+  background: var(--glass-bg);
+  backdrop-filter: blur(50px) saturate(200%) contrast(102%);
+  -webkit-backdrop-filter: blur(50px) saturate(200%) contrast(102%);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.08), inset 0 1px 1px 0 rgba(255, 255, 255, 0.6);
+}
+.dark .glass-ios {
+  background: var(--glass-bg-dark);
+  border: 1px solid var(--glass-border-dark);
+  box-shadow: 0 16px 40px -10px rgba(0, 0, 0, 0.55), inset 0 1px 0 0 rgba(255, 255, 255, 0.14);
+}
+
+.glass-ultra {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(60px) saturate(210%) contrast(106%);
+  -webkit-backdrop-filter: blur(60px) saturate(210%) contrast(106%);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  box-shadow: 0 20px 50px -12px rgba(0, 0, 0, 0.6), inset 0 1px 0 0 rgba(255, 255, 255, 0.16);
+}
+
+.glass-subtle {
+  background: rgba(255, 255, 255, 0.035);
+  backdrop-filter: blur(35px) saturate(160%);
+  -webkit-backdrop-filter: blur(35px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* ─── Mesh Gradient Background ───────────── */
+.mesh-gradient-dark {
+  background:
+    radial-gradient(ellipse 90% 60% at 15% 30%, rgba(245,158,11,0.15) 0%, transparent 60%),
+    radial-gradient(ellipse 70% 60% at 85% 15%, rgba(14,165,233,0.12) 0%, transparent 55%),
+    radial-gradient(ellipse 65% 70% at 65% 85%, rgba(168,85,247,0.12) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 50% at 10% 90%, rgba(244,63,94,0.08) 0%, transparent 55%),
+    linear-gradient(to bottom, #030406, #07090f 60%, #030406);
+}
+.mesh-gradient-light {
+  background:
+    radial-gradient(ellipse 90% 60% at 15% 30%, rgba(245,158,11,0.1) 0%, transparent 60%),
+    radial-gradient(ellipse 70% 60% at 85% 15%, rgba(59,130,246,0.08) 0%, transparent 55%),
+    radial-gradient(ellipse 65% 70% at 65% 85%, rgba(168,85,247,0.07) 0%, transparent 60%),
+    linear-gradient(to bottom, #f8fafc, #f1f5f9 60%, #e2e8f0);
+}
+
+/* ─── Dynamic Ambient Floating Mesh Orbs ──── */
+@keyframes meshOrb1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(70px, -50px) scale(1.12); }
+  66% { transform: translate(-50px, 60px) scale(0.92); }
+}
+@keyframes meshOrb2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(-60px, 50px) scale(1.18); }
+  66% { transform: translate(50px, -40px) scale(0.88); }
+}
+@keyframes meshOrb3 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(40px, 70px) scale(0.92); }
+  66% { transform: translate(-60px, -50px) scale(1.1); }
+}
+
+.animate-mesh-orb-1 { animation: meshOrb1 24s ease-in-out infinite; }
+.animate-mesh-orb-2 { animation: meshOrb2 28s ease-in-out infinite; }
+.animate-mesh-orb-3 { animation: meshOrb3 26s ease-in-out infinite; }
+
+/* ─── Keyframe Animations ────────────────── */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.94); }
+  to { opacity: 1; transform: scale(1); }
+}
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(100%); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(200%); }
+}
+@keyframes breathe {
+  0%, 100% { opacity: 0.35; transform: scale(1); }
+  50% { opacity: 0.75; transform: scale(1.03); }
+}
+@keyframes floatSlow {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-8px) scale(1.02); }
+}
+@keyframes lanternPulse {
+  0%, 100% { filter: drop-shadow(0 0 10px rgba(245,158,11,0.5)); transform: scale(1); }
+  50% { filter: drop-shadow(0 0 24px rgba(245,158,11,0.85)); transform: scale(1.04); }
+}
+@keyframes gradientFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+@keyframes tvPulse {
+  0%, 100% { box-shadow: 0 0 30px rgba(245,158,11,0.5), inset 0 0 15px rgba(245,158,11,0.2); }
+  50% { box-shadow: 0 0 50px rgba(245,158,11,0.85), inset 0 0 25px rgba(245,158,11,0.35); }
+}
+
+/* ─── Animation Utilities ────────────────── */
+.animate-fade-in-up { animation: fadeInUp 0.55s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.animate-fade-in-up-delay-1 { animation: fadeInUp 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.06s both; }
+.animate-fade-in-up-delay-2 { animation: fadeInUp 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.12s both; }
+.animate-fade-in-up-delay-3 { animation: fadeInUp 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.18s both; }
+.animate-fade-in-up-delay-4 { animation: fadeInUp 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.24s both; }
+.animate-fade-in-up-delay-5 { animation: fadeInUp 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.30s both; }
+.animate-scale-in { animation: scaleIn 0.35s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.animate-slide-up { animation: slideUp 0.45s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.animate-shimmer { animation: shimmer 2s infinite; }
+.animate-breathe { animation: breathe 4s ease-in-out infinite; }
+.animate-float { animation: floatSlow 6s ease-in-out infinite; }
+.animate-lantern-pulse { animation: lanternPulse 3s infinite ease-in-out; }
+.animate-gradient-flow {
+  background-size: 200% 200%;
+  animation: gradientFlow 6s ease infinite;
+}
+
+/* ─── Google TV / Apple TV Focus Ring ────── */
+.tv-focus-target {
+  transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  outline: none;
+}
+.tv-focus-active {
+  transform: scale(1.05) translateY(-3px) !important;
+  outline: none !important;
+  border-color: rgba(245, 158, 11, 0.9) !important;
+  box-shadow: 0 0 35px rgba(245, 158, 11, 0.6), 0 20px 45px rgba(0, 0, 0, 0.7) !important;
+  animation: tvPulse 2.5s ease-in-out infinite;
+  z-index: 30 !important;
+}
+
+/* ─── Gradient Text ──────────────────────── */
+.text-gradient-gold {
+  background: linear-gradient(135deg, #f59e0b 0%, #fbbf24 50%, #f97316 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.text-gradient-cool {
+  background: linear-gradient(135deg, #06b6d4 0%, #8b5cf6 50%, #ec4899 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.text-gradient-fire {
+  background: linear-gradient(135deg, #ff416c 0%, #ff4b2b 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ─── iOS Card Style ─────────────────────── */
+.ios-card {
+  transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+.ios-card:hover {
+  transform: scale(1.025) translateY(-2px);
+}
+.ios-card:active {
+  transform: scale(0.97);
+}
+
+/* ─── Media Card ─────────────────────────── */
+.media-card {
+  transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+.media-card:hover {
+  transform: scale(1.04) translateY(-4px);
+  z-index: 10;
+  box-shadow: 0 24px 60px -10px rgba(0,0,0,0.6), 0 0 25px rgba(245,158,11,0.2);
+}
+.media-card:hover .media-card-overlay { opacity: 1; }
+.media-card:active { transform: scale(0.98); }
+
+/* ─── App Icon ───────────────────────────── */
+.app-icon-wrapper {
+  transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.app-icon-wrapper:hover {
+  transform: scale(1.1) translateY(-2px);
+}
+.app-icon-wrapper:active {
+  transform: scale(0.9);
+}
+
+/* ─── Carousel ───────────────────────────── */
+.carousel-scroll {
+  display: flex;
+  gap: 1.15rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 0.75rem;
+  scrollbar-width: none;
+}
+.carousel-scroll::-webkit-scrollbar { display: none; }
+.carousel-scroll > * { scroll-snap-align: start; flex-shrink: 0; }
+
+/* ─── Scrollbar hide ─────────────────────── */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* ─── Safe area ──────────────────────────── */
+.pb-safe { padding-bottom: env(safe-area-inset-bottom, 1rem); }
+
+/* ─── Card Shine (iOS light refraction) ─── */
+.card-shine {
+  position: relative;
+  overflow: hidden;
+}
+.card-shine::after {
+  content: '';
+  position: absolute;
+  top: 0; left: -80%;
+  width: 50%; height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255,255,255,0.08),
+    transparent
+  );
+  transform: skewX(-18deg);
+  transition: left 0.75s ease;
+  pointer-events: none;
+}
+.card-shine:hover::after { left: 130%; }
+
+/* ─── Fluid Gradient Button ──────────────── */
+.btn-fluid {
+  background: linear-gradient(135deg, #f59e0b, #f97316, #ef4444);
+  background-size: 200% 200%;
+  animation: gradientFlow 5s ease infinite;
+  transition: all 0.3s ease;
+}
+.btn-fluid:hover {
+  box-shadow: 0 10px 35px rgba(245,158,11,0.35);
+  transform: translateY(-1px);
+}
+.btn-fluid:active {
+  transform: scale(0.97);
+}
+
+/* ─── iOS Pill Button ────────────────────── */
+.pill-btn {
+  transition: all 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.pill-btn:active {
+  transform: scale(0.95);
+}
+
+/* ─── Apple / VisionOS Interactive Card Spotlight ─── */
+.card-spotlight {
+  position: relative;
+  overflow: hidden;
+}
+.card-spotlight::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: radial-gradient(
+    400px circle at var(--spotlight-x, 50%) var(--spotlight-y, 50%),
+    rgba(255, 255, 255, 0.12),
+    transparent 70%
+  );
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 5;
+}
+.card-spotlight:hover::before {
+  opacity: 1;
+}
+
+/* ─── Top Edge Specular Reflection ────────── */
+.glass-reflection {
+  position: relative;
+}
+.glass-reflection::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.28) 20%,
+    rgba(255, 255, 255, 0.4) 50%,
+    rgba(255, 255, 255, 0.28) 80%,
+    transparent
+  );
+  pointer-events: none;
+}
+
+/* ─── Animated Shimmer Border ─────────────── */
+@keyframes borderShimmer {
+  0% { border-color: rgba(245, 158, 11, 0.3); box-shadow: 0 0 20px rgba(245, 158, 11, 0.1); }
+  50% { border-color: rgba(245, 158, 11, 0.7); box-shadow: 0 0 35px rgba(245, 158, 11, 0.25); }
+  100% { border-color: rgba(245, 158, 11, 0.3); box-shadow: 0 0 20px rgba(245, 158, 11, 0.1); }
+}
+.border-shimmer {
+  animation: borderShimmer 4s ease-in-out infinite;
+}
+
+/* ─── Live Equalizer Micro-Bounce ─────────── */
+@keyframes eq1 { 0%, 100% { height: 4px; } 50% { height: 14px; } }
+@keyframes eq2 { 0%, 100% { height: 14px; } 50% { height: 6px; } }
+@keyframes eq3 { 0%, 100% { height: 8px; } 50% { height: 16px; } }
+
+.animate-eq-1 { animation: eq1 0.85s ease-in-out infinite; }
+.animate-eq-2 { animation: eq2 0.7s ease-in-out infinite; }
+.animate-eq-3 { animation: eq3 0.95s ease-in-out infinite; }
+
+/* ─── Cinema Ambilight Glow ───────────────── */
+.cinema-ambilight {
+  filter: blur(80px);
+  opacity: 0.65;
+  transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, opacity, filter;
+}
+
+/* ─── Hero Vignette Mask ──────────────────── */
+.hero-vignette {
+  background: linear-gradient(
+    180deg,
+    rgba(5, 6, 8, 0) 0%,
+    rgba(5, 6, 8, 0.4) 50%,
+    rgba(5, 6, 8, 0.95) 90%,
+    #050608 100%
+  );
+}
+
